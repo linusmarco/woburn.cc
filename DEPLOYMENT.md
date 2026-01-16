@@ -111,6 +111,17 @@ Remember: Environment variables are baked into the build, so redeploy after chan
 
 If you need to deploy directly from your local machine (requires AWS credentials configured locally):
 
+### Prerequisites
+
+Set your AWS credentials as environment variables before running deployment commands:
+
+```bash
+export AWS_ACCESS_KEY_ID=your_access_key_id
+export AWS_SECRET_ACCESS_KEY=your_secret_access_key
+```
+
+Or add them to your shell profile (~/.bashrc, ~/.zshrc, etc.) to persist across sessions.
+
 ### Deploy Code Changes
 
 **Development:**
@@ -153,7 +164,21 @@ npm run deploy:full:dev
 npm run deploy:full:prod
 ```
 
-**Prerequisites for terminal deployment:**
-- AWS CLI configured with credentials
-- Serverless Framework installed globally: `npm install -g serverless`
-- AWS credentials profile named `serverless-admin` (or update `serverless.yml`)
+### Alternative: Using AWS Profile
+
+If you prefer using AWS profiles instead of environment variables:
+
+1. Configure your AWS credentials with a profile:
+   ```bash
+   aws configure --profile serverless-admin
+   ```
+
+2. Update `serverless.yml` to add the profile (temporarily, don't commit):
+   ```yaml
+   provider:
+     name: aws
+     profile: serverless-admin  # Add this line
+     runtime: nodejs24.x
+   ```
+
+3. Run your deployment commands as normal
