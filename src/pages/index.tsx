@@ -44,9 +44,9 @@ const IndexPage: React.FC<PageProps> = () => {
           <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-8">
             Full Calendar
           </h2>
-          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+          <div className="relative w-full h-[600px] md:h-[700px]">
             <iframe
-              src="https://calendar.google.com/calendar/embed?src=c991b2c0dc229bbeab4ab53c7fcec1fdd108045f089d1aeb1b8c69d4f9ce0224%40group.calendar.google.com&ctz=America%2FNew_York"
+              src="https://calendar.google.com/calendar/embed?src=c991b2c0dc229bbeab4ab53c7fcec1fdd108045f089d1aeb1b8c69d4f9ce0224%40group.calendar.google.com&ctz=America%2FNew_York&mode=AGENDA"
               className="absolute top-0 left-0 w-full h-full border-0 rounded-lg shadow-sm"
               title="Woburn Cycling Club Ride Calendar"
             />
