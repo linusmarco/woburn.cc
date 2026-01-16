@@ -23,13 +23,13 @@ const IndexPage: React.FC<PageProps> = () => {
       <main className="max-w-4xl mx-auto px-6 py-16">
         <div className="space-y-6">
           <p className="text-xl md:text-2xl text-gray-900 font-light leading-relaxed">
-            The hard men and women of Woburn, MA.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
 
           <p className="text-lg text-gray-700 font-light leading-relaxed">
-            We ride fast. We ride year-round. Through the bitter New England winters and
-            hot summer days—if the roads and trails are calling, we're on them. Good company, hard efforts,
-            and a healthy disregard for the thermometer.
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
         </div>
 
