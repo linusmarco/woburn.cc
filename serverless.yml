@@ -8,7 +8,6 @@ package:
 
 provider:
     name: aws
-    profile: serverless-admin
     runtime: nodejs24.x
     stage: ${opt:stage}
     region: us-east-1
