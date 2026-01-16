@@ -53,11 +53,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build site
-        run: npm run build
-        env:
-          GATSBY_GOOGLE_CALENDAR_API_KEY: ${{ secrets.GATSBY_GOOGLE_CALENDAR_API_KEY }}
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -75,3 +70,5 @@ jobs:
           github.event_name == 'push' ||
           (github.event_name == 'workflow_dispatch' && inputs.deploy_assets == true)
         run: npm run deploy:assets:${{ steps.env.outputs.stage }}
+        env:
+          GATSBY_GOOGLE_CALENDAR_API_KEY: ${{ secrets.GATSBY_GOOGLE_CALENDAR_API_KEY }}
