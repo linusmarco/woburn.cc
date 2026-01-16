@@ -1,0 +1,9 @@
+node_modules/
+.cache/
+.claude/
+public
+gatsby-types.d.ts
+.env
+.env.local
+.env.development
+.env.production
