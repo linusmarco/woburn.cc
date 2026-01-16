@@ -13,7 +13,17 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy:stack:dev": "serverless deploy --stage dev",
+    "deploy:stack:prod": "serverless deploy --stage prod",
+    "deploy:assets:dev": "npm run build && serverless client deploy --stage dev --no-confirm",
+    "deploy:assets:prod": "npm run build && serverless client deploy --stage prod --no-confirm",
+    "deploy:full:dev": "npm run deploy:stack:dev && npm run deploy:assets:dev",
+    "deploy:full:prod": "npm run deploy:stack:prod && npm run deploy:assets:prod",
+    "remove:stack:dev": "serverless remove --stage dev",
+    "remove:stack:prod": "serverless remove --stage prod",
+    "remove:assets:dev": "serverless client remove --stage dev --no-confirm",
+    "remove:assets:prod": "serverless client remove --stage prod --no-confirm"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
@@ -34,6 +44,8 @@
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "serverless": "^4.31.0",
+    "serverless-finch": "^4.0.4",
     "typescript": "^5.3.3"
   }
 }

@@ -1,6 +1,7 @@
 node_modules/
 .cache/
 .claude/
+.serverless/
 public
 gatsby-types.d.ts
 .env

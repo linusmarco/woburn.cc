@@ -1,0 +1,97 @@
+service: woburn-cc
+
+frameworkVersion: '4'
+
+package:
+    patterns:
+        - '!**/*'
+
+provider:
+    name: aws
+    profile: serverless-admin
+    runtime: nodejs24.x
+    stage: ${opt:stage}
+    region: us-east-1
+
+plugins:
+    - serverless-finch
+
+custom:
+    url:
+        dev:
+            - dev.woburn.cc
+        prod:
+            - woburn.cc
+            - www.woburn.cc
+    cert:
+        dev: 'arn:aws:acm:us-east-1:562995553656:certificate/381ab67a-d8ae-432c-9182-2eb102d74c41'
+        prod: 'arn:aws:acm:us-east-1:562995553656:certificate/381ab67a-d8ae-432c-9182-2eb102d74c41'
+    client:
+        bucketName: ${self:service}-${opt:stage}-site
+        distributionFolder: public
+        indexDocument: index.html
+        errorDocument: 404.html
+        objectHeaders:
+            index.html:
+                - name: Cache-Control
+                  value: no-cache
+            404.html:
+                - name: Cache-Control
+                  value: no-cache
+            page-data/:
+                - name: Cache-Control
+                  value: no-cache
+            static/:
+                - name: Cache-Control
+                  value: max-age=31536000
+            '*.js':
+                - name: Cache-Control
+                  value: max-age=31536000
+            '*.css':
+                - name: Cache-Control
+                  value: max-age=31536000
+            ALL_OBJECTS:
+                - name: Content-Language
+                  value: en-US
+
+resources:
+    Resources:
+        WoburnCCCloudFrontDistribution:
+            Type: AWS::CloudFront::Distribution
+            Properties:
+                DistributionConfig:
+                    Origins:
+                        - DomainName: ${self:service}-${self:provider.stage}-site.s3-website-${self:provider.region}.amazonaws.com
+                          Id: S3-Website-${self:service}-${self:provider.stage}-site.s3-website-${self:provider.region}.amazonaws.com
+                          CustomOriginConfig:
+                              HTTPPort: 80
+                              HTTPSPort: 443
+                              OriginProtocolPolicy: http-only
+                    Aliases: ${self:custom.url.${self:provider.stage}}
+                    Enabled: 'true'
+                    DefaultRootObject: index.html
+                    PriceClass: PriceClass_100
+                    HttpVersion: http2
+                    CustomErrorResponses:
+                        - ErrorCode: 404
+                          ResponseCode: 404
+                          ResponsePagePath: /404.html
+                    DefaultCacheBehavior:
+                        AllowedMethods:
+                            - DELETE
+                            - GET
+                            - HEAD
+                            - OPTIONS
+                            - PATCH
+                            - POST
+                            - PUT
+                        TargetOriginId: S3-Website-${self:service}-${self:provider.stage}-site.s3-website-${self:provider.region}.amazonaws.com
+                        ForwardedValues:
+                            QueryString: 'false'
+                            Cookies:
+                                Forward: none
+                        ViewerProtocolPolicy: redirect-to-https
+                    ViewerCertificate:
+                        AcmCertificateArn: ${self:custom.cert.${self:provider.stage}}
+                        SslSupportMethod: sni-only
+                        MinimumProtocolVersion: 'TLSv1.1_2016'
