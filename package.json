@@ -44,7 +44,7 @@
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "serverless": "^4.31.0",
+    "serverless": "^3.39.0",
     "serverless-finch": "^4.0.4",
     "typescript": "^5.3.3"
   }
