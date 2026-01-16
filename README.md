@@ -1,49 +1,99 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# Woburn Cycling Club
 
-## 🚀 Quick start
+Official website for the Woburn Cycling Club - showcasing rides, events, and community for cyclists in Woburn, MA.
 
-1.  **Create a Gatsby site.**
+## Tech Stack
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+- **Frontend**: Gatsby (React, TypeScript, Tailwind CSS)
+- **Hosting**: AWS S3 + CloudFront
+- **Deployment**: GitHub Actions
+- **Calendar**: Google Calendar API integration
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+## Quick Start
 
-2.  **Start developing.**
+### Prerequisites
 
-    Navigate into your new site’s directory and start it up.
+- Node.js 20.x
+- npm
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### Local Development
 
-3.  **Open the code and start customizing!**
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-    Your site is now running at http://localhost:8000!
+2. **Set up environment variables**
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+   Create `.env.development`:
+   ```bash
+   GATSBY_GOOGLE_CALENDAR_API_KEY=your_api_key_here
+   ```
 
-4.  **Learn more**
+3. **Start development server**
+   ```bash
+   npm start
+   ```
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+   Site runs at `http://localhost:8000`
 
-## 🚀 Quick start (Netlify)
+4. **Make changes**
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+   Edit `src/pages/index.tsx` to see live updates
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+## Deployment
+
+Deployments are automated via GitHub Actions. See [DEPLOYMENT.md](DEPLOYMENT.md) for full documentation.
+
+### Quick Reference
+
+- **Push to `develop`** → deploys to dev.woburn.cc
+- **Push to `main`** → deploys to woburn.cc
+
+### Required GitHub Secrets
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `GATSBY_GOOGLE_CALENDAR_API_KEY`
+
+## Project Structure
+
+```
+woburn.cc/
+├── src/
+│   ├── components/        # React components
+│   │   └── UpcomingRides.tsx
+│   ├── images/           # Static images
+│   └── pages/            # Page components
+│       └── index.tsx     # Homepage
+├── .github/
+│   └── workflows/        # GitHub Actions
+│       └── deploy.yml
+├── serverless.yml        # AWS infrastructure config
+└── gatsby-config.ts      # Gatsby configuration
+```
+
+## Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build production site
+- `npm run serve` - Preview production build locally
+- `npm run clean` - Clear Gatsby cache
+- `npm run typecheck` - Run TypeScript type checking
+
+## Deployment Scripts
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
+## Contributing
+
+1. Create a feature branch from `develop`
+2. Make your changes
+3. Test locally with `npm start`
+4. Create a PR to `develop`
+5. After review and merge, changes deploy to dev.woburn.cc
+6. When ready for production, merge `develop` to `main`
+
+## License
+
+Private - Woburn Cycling Club
