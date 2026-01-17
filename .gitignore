@@ -3,7 +3,7 @@ node_modules/
 .claude/
 .serverless/
 public
-gatsby-types.d.ts
+dist/
 .env
 .env.local
 .env.development

@@ -4,7 +4,7 @@ Official website for the Woburn Cycling Club - showcasing rides, events, and com
 
 ## Tech Stack
 
-- **Frontend**: Gatsby (React, TypeScript, Tailwind CSS)
+- **Frontend**: Astro (React, TypeScript, Tailwind CSS)
 - **Hosting**: AWS S3 + CloudFront
 - **Deployment**: GitHub Actions
 - **Calendar**: Google Calendar API integration
@@ -13,7 +13,7 @@ Official website for the Woburn Cycling Club - showcasing rides, events, and com
 
 ### Prerequisites
 
-- Node.js 20.x
+- Node.js 24+ (LTS)
 - npm
 
 ### Local Development
@@ -25,9 +25,9 @@ Official website for the Woburn Cycling Club - showcasing rides, events, and com
 
 2. **Set up environment variables**
 
-   Create `.env.development`:
+   Create `.env`:
    ```bash
-   GATSBY_GOOGLE_CALENDAR_API_KEY=your_api_key_here
+   PUBLIC_GOOGLE_CALENDAR_API_KEY=your_api_key_here
    ```
 
 3. **Start development server**
@@ -35,11 +35,11 @@ Official website for the Woburn Cycling Club - showcasing rides, events, and com
    npm start
    ```
 
-   Site runs at `http://localhost:8000`
+   Site runs at `http://localhost:4321`
 
 4. **Make changes**
 
-   Edit `src/pages/index.tsx` to see live updates
+   Edit `src/pages/index.astro` to see live updates
 
 ## Deployment
 
@@ -54,7 +54,7 @@ Deployments are automated via GitHub Actions. See [DEPLOYMENT.md](DEPLOYMENT.md)
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
-- `GATSBY_GOOGLE_CALENDAR_API_KEY`
+- `GOOGLE_CALENDAR_API_KEY` (maps to PUBLIC_GOOGLE_CALENDAR_API_KEY in build)
 
 ## Project Structure
 
@@ -64,22 +64,23 @@ woburn.cc/
 │   ├── components/        # React components
 │   │   └── UpcomingRides.tsx
 │   ├── images/           # Static images
-│   └── pages/            # Page components
-│       └── index.tsx     # Homepage
+│   ├── pages/            # Page components
+│   │   └── index.astro   # Homepage
+│   └── styles/           # Global styles
+│       └── global.css
 ├── .github/
 │   └── workflows/        # GitHub Actions
 │       └── deploy.yml
 ├── serverless.yml        # AWS infrastructure config
-└── gatsby-config.ts      # Gatsby configuration
+└── astro.config.mjs      # Astro configuration
 ```
 
 ## Scripts
 
 - `npm start` - Start development server
-- `npm run build` - Build production site
-- `npm run serve` - Preview production build locally
-- `npm run clean` - Clear Gatsby cache
-- `npm run typecheck` - Run TypeScript type checking
+- `npm run build` - Build production site (includes type checking)
+- `npm run preview` - Preview production build locally
+- `npm run typecheck` - Run TypeScript and Astro checks
 
 ## Deployment Scripts
 
