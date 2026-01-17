@@ -37,7 +37,7 @@ To enable automatic deployments, add these secrets to your GitHub repository (Se
 
 - `AWS_ACCESS_KEY_ID` - Your AWS access key with S3, CloudFront, and CloudFormation permissions
 - `AWS_SECRET_ACCESS_KEY` - Your AWS secret key
-- `GATSBY_GOOGLE_CALENDAR_API_KEY` - Google Calendar API key (embedded in the built site)
+- `GOOGLE_CALENDAR_API_KEY` - Google Calendar API key (maps to PUBLIC_GOOGLE_CALENDAR_API_KEY in Astro build)
 
 ## Common Workflows
 
@@ -50,7 +50,7 @@ To enable automatic deployments, add these secrets to your GitHub repository (Se
 6. When ready, merge `develop` → `main` → auto-deploys to prod
 
 ### Updating Calendar API Key
-1. Update the `GATSBY_GOOGLE_CALENDAR_API_KEY` GitHub secret
+1. Update the `GOOGLE_CALENDAR_API_KEY` GitHub secret (it maps to PUBLIC_GOOGLE_CALENDAR_API_KEY during build)
 2. Manually trigger a deployment via GitHub Actions or push a commit
 3. The new API key will be embedded in the next build
 
@@ -68,11 +68,11 @@ To enable automatic deployments, add these secrets to your GitHub repository (Se
 
 ## Environment Variables
 
-- `.env.development` - Used by `gatsby develop` and dev deployments
-- `.env.production` - Used by production builds
+- `.env` - Used by `astro dev` for local development
 - GitHub Secrets - Used by GitHub Actions for deployments
+  - `GOOGLE_CALENDAR_API_KEY` is mapped to `PUBLIC_GOOGLE_CALENDAR_API_KEY` during build
 
-Remember: Environment variables are baked into the build, so redeploy after changes.
+Remember: Environment variables prefixed with `PUBLIC_` are baked into the client-side build, so redeploy after changes.
 
 ## Troubleshooting
 
@@ -83,7 +83,7 @@ Remember: Environment variables are baked into the build, so redeploy after chan
 
 ### Calendar API not working?
 - Check Google Cloud Console that API key is restricted to your domains
-- Verify the `GATSBY_GOOGLE_CALENDAR_API_KEY` GitHub secret is correct
+- Verify the `GOOGLE_CALENDAR_API_KEY` GitHub secret is correct (it gets mapped to PUBLIC_GOOGLE_CALENDAR_API_KEY)
 - Trigger a new deployment to rebuild with the updated key
 
 ### GitHub Actions failing?
@@ -134,7 +134,7 @@ npm run deploy:assets:dev
 npm run deploy:assets:prod
 ```
 
-This builds Gatsby and uploads to S3 (takes ~1 minute).
+This builds the Astro site and uploads to S3 (takes ~1 minute).
 
 ### Deploy Infrastructure Changes
 
