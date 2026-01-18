@@ -1,8 +1,7 @@
 ---
+import { UpcomingRides } from '../components/UpcomingRides';
+import bullSil from '../images/bull-sil.png';
 import '../styles/global.css';
-import bullIcon from '../images/bull-sil.png';
-import bike1 from '../images/bike1.png';
-import bike2 from '../images/bike2.png';
 ---
 
 <html lang="en">
@@ -12,66 +11,66 @@ import bike2 from '../images/bike2.png';
     <meta name="description" content="An informal cycling club in Woburn, Massachusetts" />
     <title>Woburn Cycling Club</title>
   </head>
-  <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
-    <div style="position: relative; min-height: 100vh; overflow: hidden; background: #F5F5F5;">
-      <!-- Orange diagonal background - top right -->
-      <div style="position: absolute; top: 0; right: 0; width: 60%; height: 30%; background: rgb(226, 121, 98); clip-path: polygon(20% 0, 100% 0, 100% 100%, 45% 75%); z-index: 0;">
-        <!-- Joyce Middle School info - top right on orange -->
-        <div style="position: absolute; top: 45%; right: 8%; text-align: right; z-index: 10; font-style: italic; font-weight: 300; color: #333; font-family: serif; font-size: 13px">
-          Joyce Middle School
-          <br />
-          8am Sat & Sun
-          <br />
-          8:05 Roll Out*
+  <body>
+    <div class="min-h-screen bg-white">
+      <header class="bg-orange-700 py-8 px-8">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+          <h1 class="text-5xl md:text-6xl font-light text-white tracking-tight">
+            Woburn Cycling Club
+          </h1>
+          <img
+            src={bullSil.src}
+            alt="Bull silhouette"
+            height="80"
+            class="h-20"
+          />
         </div>
-      </div>
+      </header>
 
-      <!-- Logo circle - top left -->
-      <div style="position: absolute; top: 40px; left: 30px; z-index: 10; transform: rotate(-12deg);">
-        <div style="width: 120px; height: 120px; border-radius: 50%; border: 1px solid #555; background: rgb(226, 121, 98); display: flex; align-items: center; justify-content: center;">
-          <div style="text-align: center; color: white; font-weight: 400; font-size: 24px; line-height: 1.15; letter-spacing: 3px; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">
-            <div>WOB</div>
-            <div>URN</div>
-            <div style="display: flex; align-items: center; justify-content: center;">
-              <span>CC</span>
-              <img src={bullIcon.src} alt="" style="width: 24px; height: 24px; display: inline-block; filter: brightness(1) invert(0);" />
-            </div>
+      <main class="max-w-4xl mx-auto px-6 py-16">
+        <div class="space-y-6">
+          <p class="text-xl md:text-2xl text-gray-900 font-light leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+
+          <p class="text-lg text-gray-700 font-light leading-relaxed">
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+
+        <section class="mt-16 pt-16 border-t border-gray-200">
+          <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-8">
+            Upcoming Rides
+          </h2>
+          <UpcomingRides client:load />
+        </section>
+
+        <section class="mt-16">
+          <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-8">
+            Full Calendar
+          </h2>
+          <div class="relative w-full h-[600px] md:h-[700px]">
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=c991b2c0dc229bbeab4ab53c7fcec1fdd108045f089d1aeb1b8c69d4f9ce0224%40group.calendar.google.com&ctz=America%2FNew_York&mode=AGENDA"
+              class="absolute top-0 left-0 w-full h-full border-0 rounded-lg shadow-sm"
+              title="Woburn Cycling Club Ride Calendar"
+            />
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
-      <!-- Main text content - left side on gray background -->
-      <div style="position: absolute; top: 30%; left: 10%; max-width: 550px; z-index: 10; font-style: italic; font-family: serif; font-size: 24px; color: #555;">
-          Rather informal.
-          <br />
-          So much fun.
-          <br />
-          <a href="#" style="color: #DC8A78; text-decoration: underline;">
-            Let's Ride!
-          </a>
-      </div>
-
-      <!-- Bike image 1 (wheel) - lower left -->
-      <img src={bike2.src} alt="Bike wheels" style="position: absolute; top: 40%; right: 0; width: 50%; height: 35%; object-fit: cover; z-index: 5;" />
-
-      <!-- Bike image 2 (frame) - lower right -->
-      <img src={bike1.src} alt="Bike bars" style="position: absolute; top: 65%; right: 40%; width: 35%; height: 20%; object-fit: cover; z-index: 5;" />
-
-      <!-- Green diagonal footer - bottom right -->
-      <div style="position: absolute; bottom: 0; left: 0; width: 75%; height: 18%; background: rgb(94, 118, 110); clip-path: polygon(0 0, 100% 30%, 96% 100%, 0 100%); z-index: 8;">
-        <div style="position: absolute; bottom: 10%; left: 10%; z-index: 10; color: white; border-top: 2px solid white; padding-top: 10px;">
-          <div style="font-size: 14px; font-family: serif; font-weight: 100; font-style: italic; margin-bottom: 20px; max-width: 400px; line-height: 1.2; letter-spacing: 1px;">
+      <footer class="mt-auto py-8 px-6 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-sm font-light text-gray-600 italic mb-2">
             Industria et Velocitas
-            <br />
-            1640 / 1642 / 1889
-          </div>
+          </p>
+          <p class="text-xs font-light text-gray-500">
+            1640 | 1642 | 1889 | 2025
+          </p>
         </div>
-      </div>
-
-      <!-- Footnote - bottom right -->
-      <div style="position: absolute; bottom: 5px; right: 10px; z-index: 10; font-size: 8px; font-style: italic; font-family: serif; color: #222;">
-        *If late, try next time
-      </div>
+      </footer>
     </div>
   </body>
 </html>
