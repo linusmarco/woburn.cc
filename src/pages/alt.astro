@@ -1,0 +1,76 @@
+---
+import { UpcomingRides } from '../components/UpcomingRides';
+import bullSil from '../images/bull-sil.png';
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="An informal cycling club in Woburn, Massachusetts" />
+    <title>Woburn Cycling Club</title>
+  </head>
+  <body>
+    <div class="min-h-screen bg-white">
+      <header class="bg-orange-700 py-8 px-8">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+          <h1 class="text-5xl md:text-6xl font-light text-white tracking-tight">
+            Woburn Cycling Club
+          </h1>
+          <img
+            src={bullSil.src}
+            alt="Bull silhouette"
+            height="80"
+            class="h-20"
+          />
+        </div>
+      </header>
+
+      <main class="max-w-4xl mx-auto px-6 py-16">
+        <div class="space-y-6">
+          <p class="text-xl md:text-2xl text-gray-900 font-light leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+
+          <p class="text-lg text-gray-700 font-light leading-relaxed">
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+
+        <section class="mt-16 pt-16 border-t border-gray-200">
+          <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-8">
+            Upcoming Rides
+          </h2>
+          <UpcomingRides client:load />
+        </section>
+
+        <section class="mt-16">
+          <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-8">
+            Full Calendar
+          </h2>
+          <div class="relative w-full h-[600px] md:h-[700px]">
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=c991b2c0dc229bbeab4ab53c7fcec1fdd108045f089d1aeb1b8c69d4f9ce0224%40group.calendar.google.com&ctz=America%2FNew_York&mode=AGENDA"
+              class="absolute top-0 left-0 w-full h-full border-0 rounded-lg shadow-sm"
+              title="Woburn Cycling Club Ride Calendar"
+            />
+          </div>
+        </section>
+      </main>
+
+      <footer class="mt-auto py-8 px-6 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-sm font-light text-gray-600 italic mb-2">
+            Industria et Velocitas
+          </p>
+          <p class="text-xs font-light text-gray-500">
+            1640 | 1642 | 1889 | 2025
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

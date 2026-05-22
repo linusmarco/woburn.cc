@@ -15,7 +15,7 @@ interface CalendarEvent {
 }
 
 const CALENDAR_ID = "c991b2c0dc229bbeab4ab53c7fcec1fdd108045f089d1aeb1b8c69d4f9ce0224@group.calendar.google.com"
-const API_KEY = process.env.GATSBY_GOOGLE_CALENDAR_API_KEY || ""
+const API_KEY = import.meta.env.PUBLIC_GOOGLE_CALENDAR_API_KEY || ""
 
 export const UpcomingRides: React.FC = () => {
   const [events, setEvents] = React.useState<CalendarEvent[]>([])

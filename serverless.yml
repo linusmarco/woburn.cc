@@ -1,6 +1,6 @@
 service: woburn-cc
 
-frameworkVersion: '4'
+frameworkVersion: '3'
 
 package:
     patterns:
@@ -8,7 +8,6 @@ package:
 
 provider:
     name: aws
-    profile: serverless-admin
     runtime: nodejs24.x
     stage: ${opt:stage}
     region: us-east-1
@@ -28,7 +27,7 @@ custom:
         prod: 'arn:aws:acm:us-east-1:562995553656:certificate/381ab67a-d8ae-432c-9182-2eb102d74c41'
     client:
         bucketName: ${self:service}-${opt:stage}-site
-        distributionFolder: public
+        distributionFolder: dist
         indexDocument: index.html
         errorDocument: 404.html
         objectHeaders:

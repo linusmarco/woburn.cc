@@ -1,0 +1,67 @@
+---
+import '../styles/alt.css';
+import wccLogo from '../images/WCC Icon Design 260117i.svg';
+import bike1 from '../images/bike1.png';
+import bike2 from '../images/bike2.png';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="An informal cycling club in Woburn, Massachusetts" />
+    <title>Woburn Cycling Club</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Orange diagonal background - top right -->
+      <div class="orange-diagonal">
+        <!-- Joyce Middle School info - top right on orange -->
+        <div class="joyce-info">
+          Joyce Middle School
+          <br />
+          7am Sun
+          <br />
+          7:05 Roll Out*
+          <br />
+          Temp 30+
+        </div>
+      </div>
+
+      <!-- Logo circle - top left -->
+      <div class="logo-circle">
+        <img src={wccLogo.src} alt="Woburn Cycling Club" class="logo-svg" />
+      </div>
+
+      <!-- Main text content - left side on gray background -->
+      <div class="main-text">
+          Getting eyes on cycling in Woburn
+          <!-- <a href="#">
+            Let's Ride!
+          </a> -->
+      </div>
+
+      <!-- Bike image 1 -->
+      <img src={bike2.src} alt="Bike wheels" class="bike-image-1" />
+
+      <!-- Bike image 2 -->
+      <img src={bike1.src} alt="Bike bars" class="bike-image-2" />
+
+      <!-- Green diagonal footer - bottom right -->
+      <div class="green-diagonal">
+        <div class="footer-text">
+          <div class="footer-text-inner">
+            Industria et Velocitas
+            <br />
+            1640 / 1642 / 1889 / 2025
+          </div>
+        </div>
+      </div>
+
+      <!-- Footnote - bottom right -->
+      <div class="footnote">
+        *If late, try next time
+      </div>
+    </div>
+  </body>
+</html>
